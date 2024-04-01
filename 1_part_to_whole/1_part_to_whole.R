@@ -6,7 +6,7 @@ library(patchwork)
 library(showtext)
 
 
-data <- read.csv("1_part_to_whole.csv", dec = ",")
+data <- read.csv("https://raw.githubusercontent.com/lau-cloud/30DayChartChallenge2024/main/1_part_to_whole/1_part_to_whole.csv", dec = ",")
 
 data$answer <- factor(data$answer,
                       levels = c("Mucha frecuencia", "Bastante frecuencia",
