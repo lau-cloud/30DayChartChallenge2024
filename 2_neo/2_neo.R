@@ -104,7 +104,7 @@ regions
 
 #title
 title <- ggdraw() + 
-  draw_label("Cosas que mejoran: la mortalidad neonatal\n más baja de la historia",
+  draw_label("Cosas que mejoran: la mortalidad neonatal\n más baja desde que hay datos",
              fontfamily = "abril", size = 24, hjust = 0.5, fontface = "bold") +
   draw_label("Tasa de mortalidad neonatal (por cada 1.000 nacimientos)",
              fontfamily = "tawa", size = 15, color = "darkgrey",
