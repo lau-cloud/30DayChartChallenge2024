@@ -9,7 +9,7 @@ font_add_google("Tajawal", "tawa")
 showtext_auto()
 
 #data
-data <- read.csv("2_neo.csv", dec = ",")
+data <- read.csv("https://raw.githubusercontent.com/lau-cloud/30DayChartChallenge2024/main/2_neo/2_neo.csv", dec = ",")
 
 #clean
 data_clean <- data |> 
@@ -126,6 +126,7 @@ plot_grid <- plot_grid(
   # rel_heights values control vertical title margins
   rel_heights = c(0.2, 1)
 )
+plot_grid
 
 # save
 ggsave("2_neo.pdf",
