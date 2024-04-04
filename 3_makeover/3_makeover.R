@@ -6,7 +6,7 @@ library(gridtext)
 
 
 #data
-data <- read.csv("3_makeover.csv")
+data <- read.csv("https://raw.githubusercontent.com/lau-cloud/30DayChartChallenge2024/main/3_makeover/3_makeover.csv")
 
 
 ##coast line
