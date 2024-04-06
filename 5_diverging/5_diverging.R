@@ -12,7 +12,7 @@ font_add_google("Tajawal", "tawa")
 showtext_auto()
 
 
-fedes <- read.csv("5_diverging.csv", encoding = "UTF-8")
+fedes <- read.csv("https://raw.githubusercontent.com/lau-cloud/30DayChartChallenge2024/main/5_diverging/5_diverging.csv", encoding = "UTF-8")
 
 
 #tidy
