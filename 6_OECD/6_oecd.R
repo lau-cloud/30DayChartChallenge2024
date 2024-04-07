@@ -9,7 +9,7 @@ font_add_google("Tajawal", "tawa")
 showtext_auto()
 
 
-data <- read.csv("")
+data <- read.csv("https://raw.githubusercontent.com/lau-cloud/30DayChartChallenge2024/main/6_OECD/6_oecd.csv")
 paises <- read.csv("https://raw.githubusercontent.com/lau-cloud/30DayChartChallenge2024/main/6_OECD/6_country_codes.csv")
 
 
