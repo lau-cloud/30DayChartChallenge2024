@@ -1,31 +1,33 @@
-#tutorial: https://dqn.website/post/interactive-mekko-charts-in-r/
+#The code is based on this blog post from Duc-Quang Nguyen: https://dqn.website/post/interactive-mekko-charts-in-r/
 
+#libraries
 library(tidyverse)
 library(showtext)
 library(ggiraph)
 
 
-
-#Fonts
+#fonts
 font_add_google("DM Serif Display", "abril")
 font_add_google("Tajawal", "tawa")
 showtext_auto()
 
 
+#read the data
 fedes <- read.csv("https://raw.githubusercontent.com/lau-cloud/30DayChartChallenge2024/main/5_diverging/5_diverging.csv", encoding = "UTF-8")
 
 
-#tidy
+#calculate percentages and put data in a long format
 fedes_clean <- fedes |> 
-  mutate(diferencia = ((mujeres/total)*100)-((hombres/total)*100)) |> 
+  mutate(diferencia = ((mujeres/total)*100)-((hombres/total)*100)) |>  #this is for arranging later
   pivot_longer(cols=c('hombres', 'mujeres'), names_to = "sexo", values_to = "federados") |> 
   mutate(proporcion = federados / total)
 
 
-##limpiar nombres
+##Uppercase first letter
 fedes_clean$deporte <- str_to_sentence(fedes_clean$deporte, locale = "es")
 
 
+#create the rectangles for the mekko
 fedes_mosaic <- fedes_clean |>
   group_by(deporte) |> 
   mutate(
@@ -33,8 +35,6 @@ fedes_mosaic <- fedes_clean |>
     tot_group = sum(federados)) |>
   ungroup() |> 
   arrange(diferencia)
-
-
 
 fedes_mosaic2 <- fedes_mosaic  |> 
   group_by(sexo)  |> 
@@ -49,18 +49,15 @@ fedes_mosaic2 <- fedes_mosaic  |>
   ungroup()  |> 
   arrange() |> 
   mutate(
-    data_id = paste0(deporte, sexo),
+    data_id = paste0(deporte, sexo), #for interactivity, we need a data_id and a tooltip
     tooltip = paste0(
       "<b>", as.character(deporte),"</b>","<br>",
       sexo, ": ", "<b>", round(proporcion * 100, 1),"</b>", "%<br>",
       "Total federados/as: ",federados,"<br>"
     )
   )
-# hack to escape single quote
-#data %<>% mutate(tooltip = gsub("'", "`", tooltip))
 
-
-
+#plot it and save it to a variable
 p1 <- ggplot(fedes_mosaic2) +
   geom_rect_interactive(aes(ymin = ymin, ymax = ymax, xmin = xmin, xmax = xmax, fill = sexo,
                             data_id = data_id, tooltip = tooltip),
@@ -69,7 +66,7 @@ p1 <- ggplot(fedes_mosaic2) +
        title="Deporte federado en España",
        subtitle = "Licencias federadas según sexo. El ancho de la barra\n indica el peso de cada deporte sobre el total",
        caption = "Fuente: Consejo Superior de Deportes, año 2022. / Laura Navarro") +
-   theme_minimal() +
+  theme_minimal() +
   scale_fill_manual(values=c("#D6DAC8", "#824D74")) +
   scale_x_continuous(labels=c("0.00" = "0%", "0.25" = "25%", "0,50" = "50%", "0.75"="75%",
                             "1.00" = "100%")) +
@@ -78,12 +75,11 @@ p1 <- ggplot(fedes_mosaic2) +
     legend.position = "top",
     plot.title = element_text(hjust = 0.5, family = "abril", size =24),
     plot.subtitle = element_text(hjust = 0.5,
-                                 size = 12, color ="darkgrey",
-                                 family = "tawa"),
-    plot.caption = element_text(color = "grey", family = "tawa", hjust = 0.5, size=12,
+                                 size = 12, color ="darkgrey"),
+    plot.caption = element_text(color = "grey", hjust = 0.5, size=12,
                                 margin = margin(20,0,0,0)),
-    strip.text.x = element_text(hjust = 0.5, family = "tawa", face ="bold"),
-    strip.text.y = element_text(angle = 0, family = "tawa"),
+    strip.text.x = element_text(hjust = 0.5, face ="bold"),
+    strip.text.y = element_text(angle = 0),
     plot.margin = margin(1,1,1.5,1.2, "cm"),
     axis.text.y = element_blank(),
     panel.grid.major.y = element_blank(),
@@ -112,15 +108,9 @@ p1 <- ggplot(fedes_mosaic2) +
   annotate(geom = "curve", x = 0.85, y = 0.25, xend = 0.85, yend = 0.03, 
     curvature = .3, arrow = arrow(length = unit(2, "mm"))
   )
-  
-p1
-
-#save
-
 
 
 #interactivity
-
 plot <- girafe(ggobj=p1,
        fonts = list(sans = "Helvetica"),
        options = list(
@@ -133,7 +123,8 @@ plot <- girafe(ggobj=p1,
          opts_sizing(rescale = FALSE)),
        width_svg = 7.5,
        height_svg = 9)
-
 plot
+
+#save it as html widget
 htmltools::save_html(plot, "plot.html")
 
