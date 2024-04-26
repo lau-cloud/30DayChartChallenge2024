@@ -9,7 +9,7 @@ font_add_google("Tajawal", "tawa")
 showtext_auto()
 
 
-data <- read.csv("fig_2_1_16.csv")
+data <- read.csv("https://raw.githubusercontent.com/lau-cloud/30DayChartChallenge2024/main/26_ai/fig_2_1_16.csv")
 
 # Data
 ai_performance_data <- data |> 
