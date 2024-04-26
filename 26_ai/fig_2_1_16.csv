@@ -1,0 +1,52 @@
+Year,Method,Perfomance relative to the human baseline,Benchmark,Task
+2012,AlexNet,0.8914646996838776,ImageNet Top-5,Image classification
+2013,OverFeat - 7 accurate models,0.9142255005268702,ImageNet Top-5,Image classification
+2014,VGG-19,0.9694415173867228,ImageNet Top-5,Image classification
+2015,Inception V3,0.9947312961011591,ImageNet Top-5,Image classification
+2016,ResNeXt-101  64x4,1.0073761854583771,ImageNet Top-5,Image classification
+2017,PNASNet-5,1.0136986301369864,ImageNet Top-5,Image classification
+2018,ResNeXt-101 32x48d,1.0284510010537407,ImageNet Top-5,Image classification
+2019,BiT-L (ResNet),1.037513171759747,ImageNet Top-5,Image classification
+2020,Meta Pseudo Labels (EfficientNet-L2),1.0410958904109588,ImageNet Top-5,Image classification
+2021,Florence-CoSwin-H,1.0434141201264489,ImageNet Top-5,Image classification
+2022,Top-k DiffSortNets (EfficientNet-L@),1.039831401475237,ImageNet Top-5,Image classification
+2021,GPT-2 (1.5B),0.076666667,MATH,Competition-level mathematics
+2022,"GPT-4 model (w/ code, PAL)",0.5755555555555555,MATH,Competition-level mathematics
+2023,"GPT-4-code model (CSV, w/ code, SC, k=16)",0.9366666666666668,MATH,Competition-level mathematics
+2019,GPT-2 1.5B (fine-tuned),0.36080178173719374,MMLU,Multitask language understanding
+2020,GPT-3 (fine-tuned),0.6002227171492205,MMLU,Multitask language understanding
+2021,"Gopher (few-shot, k=5)",0.668151448,MMLU,Multitask language understanding
+2022,"Flan-PaLM (5-shot, finetuned, CoT + SC)",0.8374164810690423,MMLU,Multitask language understanding
+2023,Gemini Ultra (CoT-SC@32),1.0026726057906459,MMLU,Multitask language understanding
+2016,ReasoNet (ensemble),0.9051754385964912,SQuAD 1.1,Basic-level reading comprehension
+2017,Reinforced Mnemonic Reader (ensemble model),0.9707565789473684,SQuAD 1.1,Basic-level reading comprehension
+2018,BERT-LARGE (Ensemble+TriviaQA),1.0219298245614035,SQuAD 1.1,Basic-level reading comprehension
+2019,XLNet (single model),1.0425438596491228,SQuAD 1.1,Basic-level reading comprehension
+2020,LUKE,1.0460526315789473,SQuAD 1.1,Basic-level reading comprehension
+2021,{ANNA} (single model),1.049550438596491,SQuAD 1.1,Basic-level reading comprehension
+2017,SAN (ensemble model),0.8235083798882681,SQuAD 2.0,Medium-level reading comprehension
+2018,PAML+BERT (ensemble model),0.9622569832402235,SQuAD 2.0,Medium-level reading comprehension
+2019,ALBERT + DAAF + Verifier (ensemble),1.032681564,SQuAD 2.0,Medium-level reading comprehension
+2020,SA-Net on Albert (ensemble),1.0392290502793295,SQuAD 2.0,Medium-level reading comprehension
+2021,IE-Net (ensemble),1.0414972067039105,SQuAD 2.0,Medium-level reading comprehension
+2019,Roberta,0.9420935412026725,SuperGLUE,English language understanding
+2020,T5 Team - Google,0.9944320712694877,SuperGLUE,English language understanding
+2021,Liam Fedus,1.0155902004454345,SuperGLUE,English language understanding
+2022,Vega v2,1.0167037861915367,SuperGLUE,English language understanding
+2018,Recognition to Cognition Networks,0.5176470588235295,VCR,Visual commonsense reasoning
+2019,UNITER-large (ensemble of 10 models),0.7858823529411765,VCR,Visual commonsense reasoning
+2020,BLENDER (single model),0.8329411764705881,VCR,Visual commonsense reasoning
+2021,VLUA (single model),0.8470588235294118,VCR,Visual commonsense reasoning
+2022,HunYuan_vcr,0.8894117647058821,VCR,Visual commonsense reasoning
+2023,GPT4RoI,0.96,VCR,Visual commonsense reasoning
+2016,MCB,0.8009408269373608,VQA,Visual reasoning
+2017,"Image features from bottom-up attention (adaptive K, ensemble)",0.8649418172815053,VQA,Visual reasoning
+2018,BAN+Glove+Counter,0.8670462985887597,VQA,Visual reasoning
+2019,UNITER (Large),0.9066600643723693,VQA,Visual reasoning
+2020,Oscar,0.9138400594206486,VQA,Visual reasoning
+2021,VLMo,1.0247586036147562,VQA,Visual reasoning
+2022,PaLI,1.0435751423619708,VQA,Visual reasoning
+2019,McQueen + Roberta,0.9061356297093649,aNLI,Natural language inference
+2020,DeBERTa,0.9655543595263724,aNLI,Natural language inference
+2021,Abductive Reasoning Cycle,0.9889128094725511,aNLI,Natural language inference
+2022,TestFoundationLM,1.0080731969860064,aNLI,Natural language inference
