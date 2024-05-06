@@ -15,23 +15,23 @@ showtext_auto()
 
 
 # Loading geojson of Barcelona's neighborhoods
-barris <- st_read("0301040100_Barris_UNITATS_ADM.json",
+barris <- st_read("https://raw.githubusercontent.com/lau-cloud/30DayChartChallenge2024/main/10_physical/0301040100_Barris_UNITATS_ADM.json",
                   stringsAsFactors = FALSE, 
                   as_tibble = TRUE)
 
 # Loading geojson of Barcelona's boundary
-perfil <- st_read("0301040100_TermeMunicipal_UNITATS_ADM.json",
+perfil <- st_read("https://raw.githubusercontent.com/lau-cloud/30DayChartChallenge2024/main/10_physical/0301040100_TermeMunicipal_UNITATS_ADM.json",
                   stringsAsFactors = FALSE, 
                   as_tibble = TRUE)
 
 
-# Data from Barcelona's population census
+# Reading data from Barcelona's population census
 
-pop_barris <- read.csv("10_physical.csv")
+pop_barris <- read.csv("https://raw.githubusercontent.com/lau-cloud/30DayChartChallenge2024/main/10_physical/10_physical.csv")
 
 names(barris)[29] <- "barri"
 
-# merge shp and data.frame
+# Merging geojson and dataframe
 df <- barris |>
   left_join(pop_barris, by = "barri")
 
@@ -40,11 +40,11 @@ df <- barris |>
 
 ############################## DOT DENSITY MAP
 
-#divide number by 100 (each dot is 100 people)
+# Dividing number by 100 (each dot is 100 people)
 df_100 <- df |> 
   mutate(total_100 = total/100)
-  
-# Apply Milos function
+
+# Applying Milos function
 get_dot_density <- function() {
   num_dots <- ceiling(dplyr::select(as.data.frame(df_100), total_100))
   deu_dots <- map_df(
@@ -61,7 +61,7 @@ get_dot_density <- function() {
 deu_dots <- get_dot_density()
 
 
-##plot density map
+## Plotting a density map
 map_plot <-
     ggplot(deu_dots) +
     geom_point(
@@ -105,7 +105,7 @@ map_plot <-
 map_plot
 
 
-# save
+# Saving plot as a pdf
 ggsave("10_physical.pdf",
        map_plot,
        width = 10,
